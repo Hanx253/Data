@@ -1,0 +1,144 @@
+/* Body Background */
+body {
+    background-color: #000;
+    color: #fff;
+    font-family: "Jersey 20", sans-serif;
+    padding: 0 1rem;
+}
+
+/* Hero Section */
+.hero {
+    text-align: center;
+}
+
+.hero h1 {
+    font-size: 37px;
+    text-transform: uppercase;
+    color: #ffffff;
+    text-shadow: 0 0 20px #4ae2dd, 0 0 50px #4ae2dd;
+    margin-top: 10vh;
+}
+
+/* Content Section */
+.content {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 1rem;
+}
+
+.intro-text {
+    font-size: 22px;
+    color: #00f2ff;
+    text-align: center;
+    margin-bottom: 4.2rem;
+}
+
+.content-block {
+    margin-bottom: 1.1rem;
+}
+
+.content-block h2 {
+    font-size: 28px;
+    color: #00f2ff;
+    margin-top: 3rem;
+    margin-bottom: 0.5rem;
+}
+
+.content-block h3 {
+    font-size: 22px;
+    color: #b0f0ff;
+    margin-top: 2rem;
+}
+
+.content-block p {
+    font-size: 20px;
+    color: #ffffff;
+    line-height: 1.6;
+}
+
+.content-block li {
+    font-size: 20px;
+    color: #b0f0ff;
+    line-height: 1.6;
+}
+
+/* Home Arrow Icon Styles */
+.home-arrow {
+    position: fixed;
+    top: 30px;
+    left: 30px;
+    font-size: 30px;
+    color: #4ae2dd;
+    text-decoration: none;
+    background-color: rgba(0, 0, 0, 0.6);
+    padding: 5px 13px;
+    border-radius: 4px;
+    box-shadow: 0 0 10px #4ae2dd;
+    transition: transform 0.3s, box-shadow 0.3s;
+    z-index: 1000; /* Ensure it's above other elements */
+}
+
+.home-arrow:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 15px #4ae2dd, 0 0 30px #4ae2dd;
+}
+
+/* Image Container */
+.image-container {
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+/* Image Styling */
+.image-container img {
+    width: 100%;
+    height: auto;
+    display: block;
+    opacity: 0.85; /* Make the image slightly darker */
+    transition: opacity 0.3s, transform 0.3s;
+}
+
+/* Hover Effect */
+.image-container:hover img {
+    opacity: 1;
+    transform: scale(1.05); /* Slight zoom effect on hover */
+}
+
+.collage_container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 800px;
+    height: 500px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0 0 16px rgba(0, 0, 0, 0.55);
+    margin: auto;
+    margin-bottom: 3rem;
+    margin-top: 1rem;
+}
+
+/* Collage Piece Styling */
+.collage_piece {
+    overflow: hidden;
+    position: absolute;
+    box-sizing: border-box;
+    background-repeat: no-repeat;
+    background-size: cover;
+    transition: transform 0.5s ease;
+}
+
+/* Layered Shadow Effects */
+.level_1 {
+    z-index: 1;
+    box-shadow: 0px 0px 16px 0px rgba(0, 0, 0, 0.55);
+}
+
+.level_2 {
+    z-index: 2;
+    box-shadow: 0px 0px 16px 6px rgba(0, 0, 0, 0.24);
+}

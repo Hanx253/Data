@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Identity</title>
+    <link rel="stylesheet" href="page5.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jersey+20&family=Oswald:wght@200..700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="hero">
+        <h1>Digital Identity</h1>
+    </header>
+
+    <!-- Content Section -->
+    <section class="content">
+        <p class="intro-text">A study of how user interactions and data contribute to forming unique digital identities in the age of data-driven platforms.</p>
+        
+
+        <!-- Example Content Blocks -->
+        <div class="content-block">
+            <h2>Data Reflections</h2>
+            <p>This website takes a closer look at how personal data collection intersects with the massive data-gathering efforts of large platforms, focusing specifically on Amazon'. By reflecting on my own purchase history and comparing it with Amazon's broader data collection methods, this research aims to shed light on the contrasting goals and tactics behind personal and platform-level data usage.</p>
+            
+            <p>On a personal level, I’ve gathered details like the items I’ve purchased, how I paid, and patterns in my buying habits. These bits of information offer a small but meaningful glimpse into how my consumption behaviors shift over time—essentially, what someone like me can observe from their own experience using e-commerce platforms.</p>
+
+            <p>Amazon, however, collects data on an entirely different scale. Beyond just tracking purchases, they monitor browsing behavior, product searches, the time spent looking at specific items, and even subtle cues like how long I linger over certain products. This wealth of data is then used to tailor the shopping experience, fine-tune product recommendations, target ads, and guide the company’s decision-making process.</p>
+
+            <p>By comparing my personal data with Amazon’s practices, I’ve come to understand the key differences in scope and purpose. My data captures a narrow view of individual behavior, while Amazon’s serves bigger-picture goals like market analysis and profit maximization. This contrast highlights how data collection can vary dramatically, depending on whether it’s personal or platform-driven.</p>
+
+            <p>In a word, this project offers me a space to reflect on how data collection is evolving in the digital era. It explores how the personal information we share during transactions becomes part of a much larger, more complex strategy used by platforms like Amazon to drive their business.</p>
+
+
+    </section>
+
+    <div class="collage_container"></div>
+
+    <a href="index.html" class="home-arrow" title="Back to Home">
+        &lt;
+    </a>
+
+    <script>
+        var options = {
+          container: document.querySelector(".collage_container"),
+          piecesNum: 50,
+          imgSrc: "assets/page5.png" // Replace with your image URL
+        };
+      
+        function ImageCollage(defaults) {
+          var container = defaults.container;
+          var containerWidth = container.offsetWidth;
+          var containerHeight = container.offsetHeight;
+          var piecesNum = defaults.piecesNum;
+          var levelIndex = Math.floor(piecesNum * 0.75);
+          var maxsizeX = Math.round(container.offsetWidth / 2);
+          var maxsizeY = Math.round(container.offsetHeight / 2);
+          var offset = 15;
+          var strength = 3;
+      
+          for (var i = 0; i < piecesNum; i++) {
+            var piece = document.createElement("div");
+            piece.className = "collage_piece";
+      
+            if (i < levelIndex) {
+              piece.classList.add("level_1");
+              piece.dataset.level = 1;
+              piece.style.width = getRandomInt(100, maxsizeX) + "px";
+              piece.style.height = getRandomInt(100, maxsizeY) + "px";
+            } else {
+              piece.classList.add("level_2");
+              piece.dataset.level = 2;
+              piece.style.width = getRandomInt(40, maxsizeX / 2) + "px";
+              piece.style.height = getRandomInt(40, maxsizeY / 2) + "px";
+            }
+      
+            piece.style.backgroundImage = "url(" + defaults.imgSrc + ")";
+            container.appendChild(piece);
+      
+            piece.dataset.offset = getRandomInt(strength, strength * 2 * piece.dataset.level);
+            piece.style.backgroundSize = "" + containerWidth + "px " + containerHeight + "px";
+            piece.style.left = getRandomInt(0, containerWidth - piece.offsetWidth) + "px";
+            piece.style.top = getRandomInt(0, containerHeight - piece.offsetHeight) + "px";
+            piece.style.backgroundPosition = -piece.offsetLeft + "px " + -piece.offsetTop + "px";
+          }
+      
+          window.addEventListener("mousemove", function (e) {
+            var pieces = container.querySelectorAll(".collage_piece");
+            var mouseX = e.pageX;
+            var mouseY = e.pageY;
+      
+            for (var p = 0, l = pieces.length; p < l; p++) {
+              var levelNum = pieces[p].dataset.level;
+              var off = pieces[p].dataset.offset;
+              var xpos = (-mouseX / 2 + containerWidth / 2) / (off - levelNum);
+              var ypos = (-mouseY / 2 + containerHeight / 2) / (off - levelNum);
+              pieces[p].style.transform = `translate(${xpos}px, ${ypos}px)`;
+            }
+          });
+        }
+      
+        function getRandomInt(min, max) {
+          return Math.floor(Math.random() * (max - min + 1)) + min;
+        }
+      
+        // Initialize the collage effect
+        ImageCollage(options);
+      </script>
+      
+</body>
+</html>

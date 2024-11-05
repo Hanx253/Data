@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Reflection</title>
+    <link rel="stylesheet" href="page3.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jersey+20&family=Oswald:wght@200..700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="hero">
+        <h1>Digital Reflection</h1>
+    </header>
+
+    <!-- Content Section -->
+    <section class="content">
+        <p class="intro-text">A reflective analysis of my own transactional data, uncovering patterns in personal purchase history and how these interactions shape a personalized digital profile.</p>
+        
+        <div class="toggle-arrow" onclick="toggleImage()">
+            &#x25BC; <!-- Down Arrow Unicode -->
+        </div>
+
+        <!-- Hidden Image Section -->
+        <div class="image-container" id="dataImage" style="display: none;">
+            <img src="assets/page3.png">
+        </div>
+
+
+        <!-- Example Content Blocks -->
+        <div class="content-block">
+            <h2>Amazon Data Analysis</h2>
+            <h3>Introduction</h3>
+            <p>The dataset obtained from Amazon offers a detailed view of my transactions, going beyond just basic order information. Through this analysis, I can dig deeper into the variety and depth of the data collected, finding patterns in my spending habits. By examining factors like item prices, shipping costs, and purchasing behaviors, I hope to identify any potential relationships between these variables and better understand how they influence my overall consumption patterns.</p>
+            
+            <p>This exploration is not just about the transactions themselves but also about the underlying behaviors that drive them, giving a more nuanced picture of how I interact with the platform.</p>
+            
+            <h3>Data Overview</h3>
+            <p>The dataset offers a wealth of information, capturing both essential and detailed transaction data. Along with standard fields like order dates, purchased items, quantities, prices, shipping addresses, and payment methods, it includes more specific attributes such as:</p>
+            <li>Currency</li>
+            <li>Unit Price</li>
+            <li>Unit Price Tax</li>
+            <li>Shipping Charge</li>
+            <li>Total Discounts</li>
+            <li>Product Condition</li>
+            <p>Despite some entries marked as “Not available,” the dataset provides a rich array of information to analyze consumer behavior and trends over time.</p>
+
+            <h3>Patterns and Spending</h3>
+            <p>An initial examination of the data revealed clear spending patterns. For instance, the absence of any Amazon orders during June and July indicates seasonal patterns since I’m typically out of state during the summer. Additionally, the majority of purchases were within the $10 to $30 range, with only a few items exceeding this range but still remaining under $50.</p>
+
+            <p>A significant spike in spending occurred in May 2023, which can be attributed to relocation and the subsequent need to purchase furniture. High-value items such as a Nintendo Switch and a Polaroid camera were among the major purchases. The largest expense recorded was in November 2022, when I purchased a new phone due to the breakdown of my previous device.</p>
+
+            <h3>Shipping and Address</h3>
+            <p>The dataset includes two shipping addresses: one for my former dormitory on 1st Avenue and the other for my current residence. As an Amazon Prime member, nearly all of my orders had free shipping, which reflects a clear preference for products that come with no additional shipping costs. This likely influences my choice of vendors and products, as I tend to prioritize items available through Prime to avoid extra fees, shaping my overall shopping habits.</p>
+
+            <h3>Purchase Behavior</h3>
+            <p>One interesting finding from the analysis was the ability to explore relationships between different line items in each order. By looking at fields like “Unit Price,” “Unit Price Tax,” “Total Owed,” “Shipment Item Subtotal,” and “Shipment Item Subtotal Tax,” I could know which items were purchased together and which were bought separately. This revealed patterns in my purchasing behavior, such as grouping lower-priced items into a single order or opting to buy higher-value products individually. These insights explain on how I approach shopping, showing a more strategic side to how orders are placed based on the value of the items.</p>
+
+            <h3>Conclusion</h3>
+            <p>The analysis of my Amazon data uncovered valuable insights into my shopping preferences, seasonal habits, and spending patterns. The dataset turned out to be more detailed than anticipated, allowing me to explore various aspects of my purchasing behavior, such as how I choose shipping options, how I group items into orders, and how major life events like moving impact my spending. With this level of detail, I was able to draw more nuanced conclusions about my consumer behavior, opening the door for even deeper analysis and more focused studies in the future.</p>
+        </div>
+
+    </section>
+
+    <script>
+        function toggleImage() {
+            const imageContainer = document.getElementById('dataImage');
+            if (imageContainer.style.display === 'none' || imageContainer.style.display === '') {
+                imageContainer.style.display = 'block'; // Show the image
+            } else {
+                imageContainer.style.display = 'none'; // Hide the image
+            }
+        }
+        </script>
+
+    <a href="index.html" class="home-arrow" title="Back to Home">
+        &lt;
+    </a>
+</body>
+</html>
