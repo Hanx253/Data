@@ -4,6 +4,7 @@ body {
     color: #fff;
     font-family: "Jersey 20", sans-serif;
     padding: 0 1rem;
+    margin-bottom: 4%;
 }
 
 /* Hero Section */
@@ -45,9 +46,9 @@ body {
 }
 
 .content-block h3 {
-    font-size: 22px;
+    font-size: 20px;
     color: #b0f0ff;
-    margin-top: 2rem;
+ 
 }
 
 .content-block p {
@@ -125,6 +126,7 @@ body {
     cursor: pointer;
     perspective: 1000px;
     margin: 1rem;
+    margin-bottom: 1.8rem;
   }
 
   

@@ -4,6 +4,7 @@ body {
     color: #fff;
     font-family: "Jersey 20", sans-serif;
     padding: 0 1rem;
+    margin-bottom: 4%;
 }
 
 /* Hero Section */
@@ -100,12 +101,4 @@ body {
     width: 70%;
     height: auto;
     display: block;
-    opacity: 0.85; /* Make the image slightly darker */
-    transition: opacity 0.3s, transform 0.3s;
-}
-
-/* Hover Effect */
-.image-container:hover img {
-    opacity: 1;
-    transform: scale(1.05); /* Slight zoom effect on hover */
 }

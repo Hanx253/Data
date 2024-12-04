@@ -3,111 +3,209 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Digital Identity</title>
-    <link rel="stylesheet" href="page5.css">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Jersey+20&family=Oswald:wght@200..700&display=swap" rel="stylesheet">
+    <title>Dynamic "Protrait"</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: #000;
+            color: white;
+            font-family: "Jersey 20", sans-serif;
+            height: 100vh;
+        }
+
+        h1 {
+          font-size: 37px;
+    text-transform: uppercase;
+    color: #ffffff;
+    text-shadow: 0 0 20px #4ae2dd, 0 0 50px #4ae2dd;
+    margin-top: 7vh;
+        }
+
+        #controls {
+            margin-top: 10px;
+            display: flex;
+            gap: 15px;
+        }
+
+        input[type="text"] {
+            width: 300px;
+            padding: 5px;
+        }
+
+        canvas {
+            display: block;
+            background: #000;
+            margin-top: 20px;
+        }
+
+        .home-arrow {
+    position: fixed;
+    top: 30px;
+    left: 30px;
+    font-size: 30px;
+    color: #4ae2dd;
+    text-decoration: none;
+    background-color: rgba(0, 0, 0, 0.6);
+    padding: 5px 13px;
+    border-radius: 4px;
+    box-shadow: 0 0 10px #4ae2dd;
+    transition: transform 0.3s, box-shadow 0.3s;
+    z-index: 1000; /* Ensure it's above other elements */
+}
+
+.home-arrow:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 15px #4ae2dd, 0 0 30px #4ae2dd;
+}
+
+label{
+  font-size: 28px;
+    color: #00f2ff;
+}
+
+    </style>
 </head>
 <body>
-    <header class="hero">
-        <h1>Digital Identity</h1>
-    </header>
-
-    <!-- Content Section -->
-    <section class="content">
-        <p class="intro-text">A study of how user interactions and data contribute to forming unique digital identities in the age of data-driven platforms.</p>
-        
-
-        <!-- Example Content Blocks -->
-        <div class="content-block">
-            <h2>Data Reflections</h2>
-            <p>This website takes a closer look at how personal data collection intersects with the massive data-gathering efforts of large platforms, focusing specifically on Amazon'. By reflecting on my own purchase history and comparing it with Amazon's broader data collection methods, this research aims to shed light on the contrasting goals and tactics behind personal and platform-level data usage.</p>
-            
-            <p>On a personal level, I’ve gathered details like the items I’ve purchased, how I paid, and patterns in my buying habits. These bits of information offer a small but meaningful glimpse into how my consumption behaviors shift over time—essentially, what someone like me can observe from their own experience using e-commerce platforms.</p>
-
-            <p>Amazon, however, collects data on an entirely different scale. Beyond just tracking purchases, they monitor browsing behavior, product searches, the time spent looking at specific items, and even subtle cues like how long I linger over certain products. This wealth of data is then used to tailor the shopping experience, fine-tune product recommendations, target ads, and guide the company’s decision-making process.</p>
-
-            <p>By comparing my personal data with Amazon’s practices, I’ve come to understand the key differences in scope and purpose. My data captures a narrow view of individual behavior, while Amazon’s serves bigger-picture goals like market analysis and profit maximization. This contrast highlights how data collection can vary dramatically, depending on whether it’s personal or platform-driven.</p>
-
-            <p>In a word, this project offers me a space to reflect on how data collection is evolving in the digital era. It explores how the personal information we share during transactions becomes part of a much larger, more complex strategy used by platforms like Amazon to drive their business.</p>
-
-
-    </section>
-
-    <div class="collage_container"></div>
+    <h1>Dynamic "Protrait"</h1>
+    <div id="controls">
+        <label for="radiusInput">Enter Your Data :</label>
+        <input type="text" id="radiusInput" placeholder="e.g. your weekly spending, 5.99, 9.99, 15.99" />
+        <button onclick="createDots()">Generate Your "Protrait"</button>
+    </div>
 
     <a href="index.html" class="home-arrow" title="Back to Home">
-        &lt;
-    </a>
+      &lt;
+  </a>
+
+    <canvas id="dotCanvas"></canvas>
 
     <script>
-        var options = {
-          container: document.querySelector(".collage_container"),
-          piecesNum: 50,
-          imgSrc: "assets/page5.png" // Replace with your image URL
-        };
-      
-        function ImageCollage(defaults) {
-          var container = defaults.container;
-          var containerWidth = container.offsetWidth;
-          var containerHeight = container.offsetHeight;
-          var piecesNum = defaults.piecesNum;
-          var levelIndex = Math.floor(piecesNum * 0.75);
-          var maxsizeX = Math.round(container.offsetWidth / 2);
-          var maxsizeY = Math.round(container.offsetHeight / 2);
-          var offset = 15;
-          var strength = 3;
-      
-          for (var i = 0; i < piecesNum; i++) {
-            var piece = document.createElement("div");
-            piece.className = "collage_piece";
-      
-            if (i < levelIndex) {
-              piece.classList.add("level_1");
-              piece.dataset.level = 1;
-              piece.style.width = getRandomInt(100, maxsizeX) + "px";
-              piece.style.height = getRandomInt(100, maxsizeY) + "px";
-            } else {
-              piece.classList.add("level_2");
-              piece.dataset.level = 2;
-              piece.style.width = getRandomInt(40, maxsizeX / 2) + "px";
-              piece.style.height = getRandomInt(40, maxsizeY / 2) + "px";
-            }
-      
-            piece.style.backgroundImage = "url(" + defaults.imgSrc + ")";
-            container.appendChild(piece);
-      
-            piece.dataset.offset = getRandomInt(strength, strength * 2 * piece.dataset.level);
-            piece.style.backgroundSize = "" + containerWidth + "px " + containerHeight + "px";
-            piece.style.left = getRandomInt(0, containerWidth - piece.offsetWidth) + "px";
-            piece.style.top = getRandomInt(0, containerHeight - piece.offsetHeight) + "px";
-            piece.style.backgroundPosition = -piece.offsetLeft + "px " + -piece.offsetTop + "px";
-          }
-      
-          window.addEventListener("mousemove", function (e) {
-            var pieces = container.querySelectorAll(".collage_piece");
-            var mouseX = e.pageX;
-            var mouseY = e.pageY;
-      
-            for (var p = 0, l = pieces.length; p < l; p++) {
-              var levelNum = pieces[p].dataset.level;
-              var off = pieces[p].dataset.offset;
-              var xpos = (-mouseX / 2 + containerWidth / 2) / (off - levelNum);
-              var ypos = (-mouseY / 2 + containerHeight / 2) / (off - levelNum);
-              pieces[p].style.transform = `translate(${xpos}px, ${ypos}px)`;
-            }
-          });
+        const canvas = document.getElementById('dotCanvas');
+        const ctx = canvas.getContext('2d');
+
+        // Resize canvas to 100% of the viewport width and 80% of the height
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight * 0.78;
         }
-      
-        function getRandomInt(min, max) {
-          return Math.floor(Math.random() * (max - min + 1)) + min;
+        resizeCanvas();
+
+        let dots = [];
+        let mouseX = 0;
+        let mouseY = 0;
+
+        const maxConnectionDistance = 700; // Distance threshold for connecting dots
+        const maxConnections = 5; // Max number of connections per dot
+
+        // Normalize the radius to a manageable range (e.g., 2 to 50)
+        function normalizeRadius(inputValue, minInput = 1, maxInput = 1000, minOutput = 2, maxOutput = 50) {
+            return minOutput + ((inputValue - minInput) * (maxOutput - minOutput)) / (maxInput - minInput);
         }
-      
-        // Initialize the collage effect
-        ImageCollage(options);
-      </script>
-      
+
+        // Create dots based on user input
+        function createDots() {
+            const radiusInput = document.getElementById('radiusInput').value;
+            const radii = radiusInput.split(',').map(num => parseFloat(num.trim()));
+            dots = [];
+
+            radii.forEach(originalRadius => {
+                if (!isNaN(originalRadius) && originalRadius > 0) {
+                    const normalizedSize = normalizeRadius(originalRadius);
+                    dots.push({
+                        x: Math.random() * canvas.width,
+                        y: Math.random() * canvas.height,
+                        size: normalizedSize,           // Display size
+                        originalSize: originalRadius,   // Store original input radius for hover display
+                        dx: (Math.random() - 0.5) * 2,
+                        dy: (Math.random() - 0.5) * 2
+                    });
+                }
+            });
+        }
+
+        // Animate dots and selectively connect them
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            dots.forEach(dot => {
+                // Move dots
+                dot.x += dot.dx;
+                dot.y += dot.dy;
+
+                // Bounce off edges
+                if (dot.x < 0 || dot.x > canvas.width) dot.dx *= -1;
+                if (dot.y < 0 || dot.y > canvas.height) dot.dy *= -1;
+
+                // Draw dot
+                ctx.beginPath();
+                ctx.arc(dot.x, dot.y, dot.size, 0, Math.PI * 2);
+                ctx.fillStyle = 'white';
+                ctx.fill();
+
+                // Check if the mouse is hovering over the dot
+                if (isMouseOverDot(dot)) {
+                    // Display the original input radius
+                    ctx.font = '12px Arial';
+                    ctx.fillStyle = 'cyan';
+                    ctx.fillText(`Radius: ${dot.originalSize}`, dot.x + dot.size + 5, dot.y - dot.size - 5);
+                }
+
+                // Find and connect to a limited number of nearby dots
+                const neighbors = [];
+                dots.forEach(otherDot => {
+                    if (otherDot !== dot) {
+                        const dx = otherDot.x - dot.x;
+                        const dy = otherDot.y - dot.y;
+                        const distance = Math.sqrt(dx * dx + dy * dy);
+                        if (distance < maxConnectionDistance) {
+                            neighbors.push({ dot: otherDot, distance });
+                        }
+                    }
+                });
+
+                // Sort neighbors by distance and connect to the closest ones
+                neighbors.sort((a, b) => a.distance - b.distance);
+                neighbors.slice(0, maxConnections).forEach(neighbor => {
+                    // Calculate opacity with an exponential fade-in effect
+                    const fadeFactor = Math.pow((1 - neighbor.distance / maxConnectionDistance), 3); // Exponential fade-out
+                    ctx.beginPath();
+                    ctx.moveTo(dot.x, dot.y);
+                    ctx.lineTo(neighbor.dot.x, neighbor.dot.y);
+                    ctx.strokeStyle = `rgba(255, 255, 255, ${fadeFactor})`;
+                    ctx.stroke();
+                });
+            });
+
+            requestAnimationFrame(animate);
+        }
+
+        // Mouse hover detection
+        canvas.addEventListener('mousemove', (e) => {
+            const rect = canvas.getBoundingClientRect();
+            mouseX = e.clientX - rect.left;
+            mouseY = e.clientY - rect.top;
+        });
+
+        function isMouseOverDot(dot) {
+            const dx = mouseX - dot.x;
+            const dy = mouseY - dot.y;
+            return Math.sqrt(dx * dx + dy * dy) < dot.size;
+        }
+
+        // Start the animation
+        animate();
+
+        // Resize canvas on window resize
+        window.addEventListener('resize', resizeCanvas);
+    </script>
 </body>
 </html>
